@@ -19,7 +19,7 @@ resource "aws_autoscaling_group" "frontend" {
   instance_refresh {
     strategy = "Rolling"
     preferences {
-      min_healthy_percentage = 70
+      min_healthy_percentage = 90
     }
     triggers = ["desired_capacity"]
   }
@@ -27,7 +27,7 @@ resource "aws_autoscaling_group" "frontend" {
   tag {
     key                 = "Name"
     value               = "${var.project_name}-frontend-asg"
-    propagate_at_launch = true
+    propagate_at_launch = false
   }
 }
 
